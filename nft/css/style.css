@@ -1,0 +1,94 @@
+
+.topnav {
+    background-color: rgb(74, 96, 117);
+    overflow: hidden;
+  }
+  
+  .topnav a {
+    float: left;
+    color: #b48080;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+  }
+  
+  .topnav a:hover {
+    background-color: rgb(201, 97, 97);
+    color: black;
+  }
+  
+  .topnav a.active {
+    background-color: #462961;
+    color: white;
+  }
+
+  .topright {
+    position: absolute;
+    top: 8px;
+    right: 16px;
+  }
+
+  .toprightT {
+    position: absolute;
+    top: 8px;
+    right: 52px;
+  }
+
+  .image {
+    position: absolute;
+    top: 350px;
+    left: 30px;
+  }
+
+  .text {
+    position: sticky; 
+    padding-top: 20px;
+    width: 500px;
+    height: 300px;
+    padding-left: 450px;
+  }
+
+  .button {
+    position: relative;
+    background-color: #84359c;
+    border: none;
+    font-size: 28px;
+    color: #ffffff;
+    padding: 20px;
+    width: 250px;
+    text-align: center;
+    transition-duration: 0.4s;
+    text-decoration: none;
+    overflow: hidden;
+    cursor: pointer;
+    left: 700px;
+    top: 220px;
+  }
+  
+  .button:after {
+    content: "";
+    background: #000000;
+    display: block;
+    position: absolute;
+    padding-top: 300%;
+    padding-left: 350%;
+    margin-left: -20px !important;
+    margin-top: -120%;
+    opacity: 0;
+    transition: all 0.5s
+  }
+  
+  .button:active:after {
+    padding: 0;
+    margin: 0;
+    opacity: 1;
+    transition: 0s
+  }
+
+  .center {
+    top: 50%;
+    width: 100%;
+    text-align: center;
+  }
+  
