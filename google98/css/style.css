@@ -1,0 +1,19 @@
+body {
+    display: block;
+    text-align: -webkit-center;
+}
+
+.top {
+    background-color: rgb(209, 209, 209);
+    margin: 1%;
+
+
+}
+
+article {
+    width: 20%;
+    float: left;
+    padding: 5%;
+    margin-right: 1%;
+    background-color: rgb(126, 229, 218);
+}
