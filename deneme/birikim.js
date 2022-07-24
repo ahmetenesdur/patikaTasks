@@ -1,0 +1,1 @@
+if(isNaN(yas)){ divEl.innerHTML= 55; }
