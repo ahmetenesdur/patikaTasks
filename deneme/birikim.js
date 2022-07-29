@@ -1,29 +1,35 @@
-let movie = { 
+const form = document.querySelector('form');
+const ul = document.querySelector('ul');
+const button = document.querySelector('button');
+const input = document.getElementById('item');
+let itemsArray = localStorage.getItem('items') ? JSON.parse(localStorage.getItem('items')) : [];
 
-  name: "La la land",
-  
-  thisInArrow:() => { 
-  console.log("Movie name is " + this.name); // 'this' window'u referans gösterir. Bu yüzden name'yi bulamaz.
-  }, 
-  
-  thisInRegular(){ 
-  console.log("Movie name is " + this.name); // 'this' kendisini referans gösterir ve çalışır.
-  } 
-  
-  };
-  movie.thisInArrow(); // output : Movie name is
-  movie.thisInRegular(); // output : Movie name is La la land
+localStorage.setItem('items', JSON.stringify(itemsArray));
+const data = JSON.parse(localStorage.getItem('items'));
 
-  const newArray = (nums) => {
-
-    const newNums = nums.map(e=>{      
-        if(e%2==0){
-            return e*2
-        }else if(e%2==1){
-            return e*3
-        }
-    });
-   return newNums 
+const liMaker = (text) => {
+  const li = document.createElement('li');
+  li.textContent = text;
+  ul.appendChild(li);
 }
 
-console.log(newArray([1,2,3,4,5]));  // output: [3,4,9,8,15]
+form.addEventListener('submit', function (e) {
+  e.preventDefault();
+
+  itemsArray.push(input.value);
+  localStorage.setItem('items', JSON.stringify(itemsArray));
+  liMaker(input.value);
+  input.value = "";
+});
+
+data.forEach(item => {
+  liMaker(item);
+});
+
+button.addEventListener('click', function () {
+  localStorage.clear();
+  while (ul.firstChild) {
+    ul.removeChild(ul.firstChild);
+  }
+  itemsArray = [];
+});

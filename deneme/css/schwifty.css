@@ -1,6 +1,14 @@
-.text-primary {
-    color: green
-}
-.text-danger {
-    color: red
-}
+#yellow, #purple {
+      width:70px;
+      height:70px;
+      border-radius:50%;
+      margin:15px;
+       }
+  
+      #yellow{
+        background-color:yellow;
+      }
+  
+      #purple{
+        background-color:rebeccaPurple;
+      }
