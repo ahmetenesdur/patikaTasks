@@ -12,20 +12,12 @@
 </head>
 
 <body>
+    <h1>Deneme</h1>
 
-  <div class="small-container">
-    <h1>New Tab App</h1>
-
-    <form>
-      <input id="item" type="text" placeholder="New">
-      <input type="submit" value="Ekle">
+    <form onsubmit="handleSubmit(e)" method="POST"><input type="text"name="username"placeholder="Kullanıcı adınızı giriniz"onchange="handleChange(event)"
+      /><input type="password"name="password"placeholder="Şifrenizi giriniz."onchange="handleChange(event)"
+      /><button type="submit">Giriş</button>
     </form>
-
-    <h2>Items</h2>
-    <ul></ul>
-
-    <button>Tümünü sil</button>
-  </div>
 
   <script src="/deneme/birikim.js"></script>
 </body>
