@@ -1,25 +1,14 @@
-function sampleFunction() {
-    var at = document.getElementById("email").value.indexOf("@");
-    var age = document.getElementById("age").value;
-    var fname = document.getElementById("fname").value;
-    submitOK = "true";
-  
-    if (fname.length > 10) {
-      alert("The name may have no more than 10 characters");
-      submitOK = "false";
-    }
-  
-    if (isNaN(age) || age < 1 || age > 100) {
-      alert("The age must be a number between 1 and 100");
-      submitOK = "false";
-    }
-  
-    if (at == -1) {
-      alert("Not a valid e-mail!");
-      submitOK = "false";
-    }
-  
-    if (submitOK == "false") {
-      return false;
-    }
-  }
+var sports = ['basketball', 'football', 'tennis' ];
+console.log(sports); // basketball, football, tennis
+sports.splice(1,0,'baseball');
+console.log(sports); // basketball, baseball, football, tennis
+
+var sports = ['basketball', 'football', 'tennis' ];
+console.log(sports); // basketball, football, tennis
+sports.splice(1,1);
+console.log(sports); // basketball, tennis
+
+var sports = ['basketball', 'football', 'tennis' ];
+console.log(sports[2]); // tennis
+sports[2] = 'judo';
+console.log(sports[2]); // judo
