@@ -1,18 +1,12 @@
-let dizi = [3,6,9,14,16];
+let nums = [2, 3, 6, 6, 5]
 
-// Uygun dizi metotlarını kullanarak, yukarıdaki dizi için aşağıdaki şartları sağlayan myFunction fonksiyonunu yazın.
-// Elemanların arasında 5'ten büyük olan olan bir eleman varsa konsola "Beşten büyük bir eleman mevcut." yoksa "5'ten büyük eleman mevcut değil." yazdır.
+function getSecondLargest(nums) {
+    let newNums = nums.slice()
+    newNums.sort(function(a,b){return b-a})
 
-const sonuc = dizi.some(function(rakam) {
-    return rakam > 5;
-});
-
-function myFunction (dizi){
-    dizi = sonuc
-    if(dizi==true) {
-        console.log("Beşten büyük bir eleman mevcut.");
-    } else
-    console.log("5'ten büyük eleman mevcut değil.");
+    return newNums.find(function (element){
+        return newNums[0] > element
+    })
 }
 
-myFunction(dizi);
+console.log(getSecondLargest(nums));
