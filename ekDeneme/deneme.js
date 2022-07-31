@@ -1,14 +1,18 @@
-var sports = ['basketball', 'football', 'tennis' ];
-console.log(sports); // basketball, football, tennis
-sports.splice(1,0,'baseball');
-console.log(sports); // basketball, baseball, football, tennis
+let dizi = [3,6,9,14,16];
 
-var sports = ['basketball', 'football', 'tennis' ];
-console.log(sports); // basketball, football, tennis
-sports.splice(1,1);
-console.log(sports); // basketball, tennis
+// Uygun dizi metotlarını kullanarak, yukarıdaki dizi için aşağıdaki şartları sağlayan myFunction fonksiyonunu yazın.
+// Elemanların arasında 5'ten büyük olan olan bir eleman varsa konsola "Beşten büyük bir eleman mevcut." yoksa "5'ten büyük eleman mevcut değil." yazdır.
 
-var sports = ['basketball', 'football', 'tennis' ];
-console.log(sports[2]); // tennis
-sports[2] = 'judo';
-console.log(sports[2]); // judo
+const sonuc = dizi.some(function(rakam) {
+    return rakam > 5;
+});
+
+function myFunction (dizi){
+    dizi = sonuc
+    if(dizi==true) {
+        console.log("Beşten büyük bir eleman mevcut.");
+    } else
+    console.log("5'ten büyük eleman mevcut değil.");
+}
+
+myFunction(dizi);
