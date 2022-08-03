@@ -18,11 +18,11 @@
       <div style="position: absolute; top: 0; right: 0">
         <div
           id="liveToast"
-          class="toast success hide"
+          class="toast success hide bg-success"
           role="alert"
           aria-live="assertive"
           aria-atomic="true"
-          data-delay="4000"
+          data-delay="2000"
         >
           <div>
             <button
@@ -34,7 +34,7 @@
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <div class="toast-body">Listeye eklendi.</div>
+          <div class="toast-body"><strong>Listeye eklendi.</strong></div>
         </div>
       </div>
     </div>
@@ -42,11 +42,11 @@
       <div style="position: absolute; top: 0; right: 0">
         <div
           id="liveToast"
-          class="toast error hide"
+          class="toast error hide bg-warning"
           role="alert"
           aria-live="assertive"
           aria-atomic="true"
-          data-delay="4000"
+          data-delay="2000"
         >
           <div>
             <button
@@ -58,12 +58,13 @@
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <div class="toast-body">Listeye boş ekleme yapamazsınız!</div>
+          <div class="toast-body"><strong> Listeye boş ekleme yapamazsınız! </strong></div>
         </div>
       </div>
     </div>
+
     <div class="container">
-      <div class="header">
+      <form class="header" id="userTask">
         <img
           src="https://cdn.sanity.io/images/9kdepi1d/production/65c832d202a503b15d99e628f4313782f3ef50db-300x62.png"
           class="mb-1"
@@ -71,17 +72,10 @@
         />
         <h2>Yapılacaklar Listesi</h2>
         <input type="text" id="task" placeholder="Bugün ne yapacaksın?" />
-        <span onclick="newElement()" id="liveToastBtn" class="button"
-          >Ekle</span
-        >
-      </div>
+        <button type="button" class="button btn btn-primary" onclick="newElement()" id="liveToastBtn" >Ekle</button>
+      </form>
 
       <ul id="list">
-        <li>3 Litre Su İç</li>
-        <li>Ödevleri Yap</li>
-        <li>En Az 3 Saat Kodlama Yap</li>
-        <li>Yemek Yap</li>
-        <li>50 Sayfa Kitap Oku</li>
       </ul>
       <script src="/toDoList/toDoList.js"></script>
       <script
