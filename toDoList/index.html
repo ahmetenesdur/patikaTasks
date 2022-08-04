@@ -64,16 +64,18 @@
     </div>
 
     <div class="container">
-      <form class="header" id="userTask">
+      <div class="header" >
         <img
           src="https://cdn.sanity.io/images/9kdepi1d/production/65c832d202a503b15d99e628f4313782f3ef50db-300x62.png"
           class="mb-1"
           alt=""
         />
         <h2>Yapılacaklar Listesi</h2>
+        <form id="addTask">
         <input type="text" id="task" placeholder="Bugün ne yapacaksın?" />
-        <button type="button" class="button btn btn-primary" onclick="newElement()" id="liveToastBtn" >Ekle</button>
+        <button type="submit" id="liveToastBtn" class="button" style = "border-width: 0px" >Ekle</button>
       </form>
+    </div>
 
       <ul id="list">
       </ul>

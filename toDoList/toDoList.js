@@ -1,103 +1,101 @@
-let listDOM = document.querySelector('#list')
-let LocalTask = { id: "", task: "", check: false }
-let ArrayTask = []
-let i = 0;
+let listDOM = document.querySelector("#list") // eklenecek yeri seçme
+let storage = {id:"", task:"", check: false} // localstorage için object
+let arrStorage = [] //localstorage için array
+let i = 0 // id ataması
 
-if (localStorage.getItem('todo')) {
-    ArrayTask = JSON.parse(localStorage.getItem('todo'))
-    ArrayTask.forEach(function (element) {
+// LocalStorage 
+if(localStorage.getItem("todo")) { // eğer localstorage varsa göster
+    arrStorage = JSON.parse(localStorage.getItem('todo')) // arraye localstorage object bilgilerini aktarmak
+
+    arrStorage.forEach(function (element) {
         i++;
-        element.id = `id${i}`;
-        localStorage.setItem('todo', JSON.stringify(ArrayTask))
 
-        let liDOM = document.createElement(`li`)
-        liDOM.setAttribute('id', `id${i}`)
-        liDOM.innerHTML =
-            `
-        ${element.task} 
+        element.id = `id${i}`; // storage id verme
+        localStorage.setItem("todo", JSON.stringify(arrStorage)) // storage object ekleme
+        let liDOM = document.createElement(`li`) // list element oluşturma
+        liDOM.setAttribute("id",`id${i}`) // list id verme
+        liDOM.innerHTML = `
+        ${element.task}
         <button
         class="close" 
-        style="width: 50px; height: 50px; text-align: center;"
+        style="width: 50px; height: 50px; text-align: center; font-size: 20px;"
         onclick="RemoveFunc(${i})"
         >x
         </button>
         `
-
-        listDOM.append(liDOM)
-        if (ArrayTask[i - 1].check) {
-            let changeLi = document.querySelector(`#id${i}`)
-            changeLi.classList.add("checked")
+        listDOM.append(liDOM) // oluşturulan list i ul un altına ekleme
+        if(arrStorage[i-1].check) {
+            let checkLi = document.querySelector(`#id${i}`) // son list seçme
+            checkLi.classList.add("checked") // list checked clası ekleme
         }
-    });
+    }); // localstorage deki bilgiyi list e aktarmak 
 }
 
-let elem = document.querySelector('#liveToastBtn')
-elem.outerHTML = `<button type="submit" onclick="newElement()" id="liveToastBtn" class="button" style ="border-width: 0px">${elem.innerHTML}</button>`;
+// input daki bilgiye uluşmak
+let addTaskDOM = document.querySelector("#addTask")
+addTaskDOM.addEventListener("submit", formHandler)
 
-let userTaskDOM = document.querySelector('#userTask')
-userTaskDOM.addEventListener('submit', formHandler)
-
+// input işlemleri
 function formHandler(event) {
-    event.preventDefault()
-    const TASK = document.querySelector("#task")
+    event.preventDefault() // sayfa refresh engeller
+    const input = document.querySelector("#task") // input u seçme
 
-    if (TASK.value.trim() == "") {
-        $(".error").toast("show");
-    }
-    else {
-        addItem(TASK.value)
-        TASK.value = ""
-        $(".success").toast("show");
+    if(input.value.trim() == "") { // error toast göster
+        $(".error").toast("show") 
+    } else {
+        addItem(input.value) //foncsiyonu çalıştırır
+        input.value = ""
+        $(".success").toast("show")
     }
 }
 
-const addItem = (task) => {
+// bilgi ekleme 
+function addItem(part) {
     i++;
 
-    LocalTask.task = task;
-    LocalTask.id = `id${i}`;
-    ArrayTask.push(LocalTask)
-    localStorage.setItem('todo', JSON.stringify(ArrayTask))
-    ArrayTask = JSON.parse(localStorage.getItem('todo'))
+    storage.task = part //object e bilgi yolla
+    storage.id = `id${i}` // object id yolla
+    arrStorage.push(storage) // localstorage e object deki bilgileri yolla
+    localStorage.setItem("todo", JSON.stringify(arrStorage))
+    arrStorage = JSON.parse(localStorage.getItem("todo"))
 
-    let liDOM = document.createElement(`li`)
-    liDOM.setAttribute('id', `id${i}`)
-    liDOM.innerHTML =
-        `
-    ${task} 
-    <button 
+    let liDOM = document.createElement("li") // list element oluşturma
+    liDOM.setAttribute("id",`id${i}`) // list id verme
+    liDOM.innerHTML = `
+    ${task}
+    <button
     class="close" 
-    style="width: 50px; height: 50px; text-align: center;"
+    style="width: 50px; height: 50px; text-align: center; font-size: 20px;"
     onclick="RemoveFunc(${i})"
     >x
     </button>
     `
-    listDOM.append(liDOM)
+    listDOM.append(liDOM) // oluşturulan list i ul un altına ekleme
 }
 
+// silme fonksiyonu
 function RemoveFunc(j) {
-    const element = document.querySelector(`#id${j}`);
-
-    let index = ArrayTask.findIndex(function (Atask) {
-        return JSON.stringify(Atask).indexOf(`id${j}`) >= 0
-    });
-    ArrayTask.splice(index, 1)
-    localStorage.setItem('todo', JSON.stringify(ArrayTask))
-    ArrayTask = JSON.parse(localStorage.getItem('todo'))
-    element.remove();
+    const element = document.querySelector(`#id${j}`) // silinecek list seçme
+    let index = arrStorage.findIndex(function (find) {
+        return JSON.stringify(find).indexOf(`id${j}`) >= 0
+    }) // silenecek elemanın index i
+    arrStorage.splice(index,1) // localstorage içinden silme
+    localStorage.setItem("todo", JSON.stringify(arrStorage)) // yeniden set etme
+    arrStorage = JSON.parse(localStorage.getItem("todo"))
+    element.remove() // list silme
 }
 
-document.addEventListener('click', (element) => {
-    if (element.target.matches('li')) {
-        let elementId = element.target.id;
-        let index = ArrayTask.findIndex(function (Atask) {
-            return JSON.stringify(Atask).indexOf(`${elementId}`) >= 0
-        });
-        ArrayTask[index].check = !(ArrayTask[index].check)
-        localStorage.setItem('todo', JSON.stringify(ArrayTask))
-        ArrayTask = JSON.parse(localStorage.getItem('todo'))
-
-        let changeLi = document.querySelector(`#${elementId}`)
-        changeLi.classList.toggle("checked")
+// checked işlemi
+document.addEventListener("click", (element) => {
+    if(element.target.matches('li')) { // list mi kontrol et
+        let elementId = element.target.id // id ye öğren
+        let index = arrStorage.findIndex(function(find) {
+            return JSON.stringify(find).indexOf(`${elementId}`) >= 0
+        }) // localstorage deki index e ulaşma
+        arrStorage[index].check = !(arrStorage[index].check) // localstorage deki check bilgisini değiştirme
+        localStorage.setItem("todo", JSON.stringify(arrStorage)) // tekrar set etme
+        arrStorage = JSON.parse(localStorage.getItem("todo"))
+        let checkLi = document.querySelector(`#${elementId}`)
+        checkLi.classList.toggle("checked")
     }
-});
+})
