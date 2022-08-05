@@ -62,7 +62,7 @@ function addItem(part) {
     let liDOM = document.createElement("li") // list element oluşturma
     liDOM.setAttribute("id",`id${i}`) // list id verme
     liDOM.innerHTML = `
-    ${task}
+    ${task.value}
     <button
     class="close" 
     style="width: 50px; height: 50px; text-align: center; font-size: 20px;"
