@@ -1,11 +1,12 @@
-let person = {
-  name: "Jack",
-  age: 20
-};
+function Insan(isim,yas) {
+  this.isim = isim;
+  this.yas = yas;
+}
 
-document.getElementById("demo").innerHTML = JSON.stringify(person); // Bu objenizi bir stringe çevirip demo idsine basacaktır.
+const ayse = new Insan("ayşe",22);
 
-let stringObject = JSON.stringify(person);
 
-let newPerson = JSON.parse(stringObject); 
-// parse methodu da stringtify methodunun tersi olarak çalışır ve stringi objeye çevirir 
+ayse.__proto__.enYeniFonksiyon = () => {console.log("Tekrar Merhaba Kodluyoruz!")}
+ayse.enYeniFonksiyon();
+// Output : "Tekrar Merhaba Kodluyoruz!"
+console.log(ayse);
