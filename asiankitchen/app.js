@@ -81,3 +81,67 @@ const menu = [
     desc: `Red bean paste dessert, serving with honey.`,
   },
 ];
+
+const buttons = document.querySelector(".btn-container")
+const menuItem = document.querySelector(".section-center")
+
+const menuList = menuitems => {
+  let mainMenu = menuitems.map(item => {
+    return `<div class="menu-items col-lg-6 col-sm-12">
+            <img
+              src=${item.img}
+              alt=${item.title}
+              class="photo"
+            />
+            <div class="menu-info">
+              <div class="menu-title">
+                <h4>${item.title}</h4>
+                <h4 class="price">${item.price}</h4>
+              </div>
+              <div class="menu-text">
+                ${item.desc}
+              </div>
+            </div>
+          </div>
+          `
+  }).join("")
+  menuItem.innerHTML = mainMenu
+}
+
+menuList(menu);
+
+const categories = menu.reduce((acc, item) => {
+  if (!acc.includes(item.category)) {
+    acc.push(item.category)
+  }
+  return acc
+},
+  ["All"]
+)
+
+const categoryList = () => {
+  const categoryButton = categories.map(category => {
+    return `<button class="btn btn-outline-dark btn-item" data-id=${category}>${category}</button>`;
+  }).join("")
+  buttons.innerHTML = categoryButton
+
+  const filterButtons = document.querySelectorAll(".btn-item");
+
+  filterButtons.forEach((button) => {
+    button.addEventListener("click", (element) => {
+      const category = element.currentTarget.dataset.id
+      const menuCategory = menu.filter((menuItem) => {
+        if (menuItem.category === category) {
+          return menuItem;
+        }
+      })
+      if (category === "All") {
+        menuList(menu);
+      } else {
+        menuList(menuCategory);
+      }
+    })
+  })
+}
+
+categoryList();

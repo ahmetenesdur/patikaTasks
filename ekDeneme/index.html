@@ -1,14 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  <h1 id="demo">Deneme</h1>
+<html>
+<body onclick="myFunction(event)">
 
-  <script src="/ekDeneme/deneme.js"></script>
+<p>Click on a paragraph. An alert box will alert the element whose eventlistener triggered the event.</p>
+
+<p><strong>Note:</strong> The currentTarget property does not necessarily return the element that was clicked on, but the element whose eventlistener triggered the event.</p>
+
+<script>
+function myFunction(event) { 
+  alert(event.currentTarget.nodeName);
+}
+</script>
+
 </body>
 </html>
