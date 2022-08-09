@@ -83,7 +83,7 @@ const menu = [
 ];
 
 const buttons = document.querySelector(".btn-container")
-const menuItem = document.querySelector(".section-center")
+const menuItems = document.querySelector(".section-center")
 
 const menuList = menuitems => {
   let mainMenu = menuitems.map(item => {
@@ -105,7 +105,7 @@ const menuList = menuitems => {
           </div>
           `
   }).join("")
-  menuItem.innerHTML = mainMenu
+  menuItems.innerHTML = mainMenu
 }
 
 menuList(menu);

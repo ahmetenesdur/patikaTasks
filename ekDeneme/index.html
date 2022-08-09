@@ -2,15 +2,38 @@
 <html>
 <body onclick="myFunction(event)">
 
-<p>Click on a paragraph. An alert box will alert the element whose eventlistener triggered the event.</p>
+  <div class="component">
+    <div class="component-content">
+        <h4>Component: Get Github repo stars number</h4>
 
-<p><strong>Note:</strong> The currentTarget property does not necessarily return the element that was clicked on, but the element whose eventlistener triggered the event.</p>
+        <form class="form-inline">
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" required class="form-control" id="username" placeholder="Username:" value="facebook">
+            </div>
+            <div class="form-group">
+                <label for="reponame">Repo name:</label>
+                <input type="text" required class="form-control" id="reponame" placeholder="Repo name:" value="react">
+            </div>
+            <div class="form-group">
+                <label>​</label>
+                <button type="submit" class="btn btn-primary">Get number of stars</button>
+            </div>
+        </form>
+    </div>
 
-<script>
-function myFunction(event) { 
-  alert(event.currentTarget.nodeName);
-}
-</script>
+
+    <h5>
+        Stars number:
+        <span class="stars-number"></span>
+    </h5>
+
+    <div class="component-loader">
+        <div class="component-loader-animation"></div>
+    </div>
+</div>
+
+  <script src="/ekDeneme/deneme.js"></script>
 
 </body>
 </html>
