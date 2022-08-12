@@ -1,10 +1,19 @@
-const toTitleCase = (phrase) => {
-  return phrase
-    .toLowerCase()
-    .split(' ')
-    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(' ');
-};
+function LetterChanges(str) { 
 
-let result = toTitleCase('maRy hAd a lIttLe LaMb');
-console.log(result);
+
+  var alpha = "abcdefghijklmnopqrstuvwxyz";
+  var newAlpha = "bcdEfghIjklmnOpqrstUvwxyzA";
+  var answer = "";
+  
+  for (i = 0; i < str.length; i++)
+  {
+      if (alpha.indexOf(str[i]) !== -1) {
+          answer += newAlpha.charAt(alpha.indexOf(str[i]));
+      } else {
+          answer += str[i];
+      }
+  }
+  return answer;
+}
+
+console.log(LetterChanges("deneme*5"));
