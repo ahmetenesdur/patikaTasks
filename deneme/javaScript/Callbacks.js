@@ -9,7 +9,7 @@ function addAll(){
     addString('', 'A', result => {
       addString(result, 'B', result => {
         addString(result, 'C', result => {
-         console.log(result)
+          console.log(result)
         })
       })
     })
