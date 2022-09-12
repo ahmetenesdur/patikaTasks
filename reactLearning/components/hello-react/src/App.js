@@ -1,24 +1,28 @@
-import logo from './logo.svg';
 import './App.css';
+
+// import Header from './components/header';
+
+// function App() {
+//   return (
+//     <>
+//       <h1 className='xyz'>Hello React</h1>
+//       <Header />
+
+//       <label htmlFor="myInput">
+//         Enter your name:
+//         <input id="myInput" type="text" />
+//       </label>
+//     </>
+//   );
+// }
+
+const name = 'Ahmet Enes';
+const surname = 'Dur';
+const isLogin = true;
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <h1>{isLogin ? ` Benim adım ${name}, soyadım ${surname}. ` : 'Giriş yapmadınız.'} </h1>
   );
 }
 
