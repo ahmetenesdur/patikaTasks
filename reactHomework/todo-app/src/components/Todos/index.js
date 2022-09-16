@@ -27,10 +27,9 @@ function Todo() {
                 <Form addTodos={setTodos} todos={todos} />
             </header>
 
-            <section className='main'>
-            <List />
-            </section>
-
+            <div>
+                <List addTodos={setTodos} todos={todos} />
+            </div>
 
             <Footer />
         </section>
