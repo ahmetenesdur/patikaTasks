@@ -16,7 +16,7 @@ function Form({ addTodos, todos }) {
     const handleSubmit = (e) => {
         e.preventDefault()
 
-        if (formValues.input.trim() === '') return alert('Please enter a todo')
+        if (formValues.input.trim() === '') return '';
 
         addTodos([...todos, formValues])
     }

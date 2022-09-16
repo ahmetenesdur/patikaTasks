@@ -6,6 +6,7 @@ import Footer from './Footer'
 import './styles.css'
 
 function Todo() {
+    const [filtering, setFiltering] = useState(0);
     const [todos, setTodos] = useState(
         JSON.parse(localStorage.getItem('todos')) || [
             { input: 'Learn React', completed: false },
@@ -24,14 +25,26 @@ function Todo() {
 
             <header className='header'>
                 <h1>todos</h1>
-                <Form addTodos={setTodos} todos={todos} />
+                <Form
+                    addTodos={setTodos}
+                    todos={todos}
+                />
             </header>
 
             <div>
-                <List addTodos={setTodos} todos={todos} />
+                <List
+                    addTodos={setTodos}
+                    todos={todos}
+                    filtering={filtering}
+                />
             </div>
 
-            <Footer />
+            <Footer
+                addTodos={setTodos}
+                todos={todos}
+                filtering={filtering}
+                setFiltering={setFiltering}
+            />
         </section>
     )
 }

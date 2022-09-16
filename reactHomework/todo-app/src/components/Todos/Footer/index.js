@@ -1,25 +1,58 @@
 import React from 'react'
 
-function Footer() {
+function Footer({ addTodos, todos, filtering, setFiltering }) {
+
+    const clearCompleted = () => {
+        addTodos(todos.filter((todo) => todo.completed === false))
+    }
+
+    var clearCompletedButton;
+    if (todos.filter((todo) => todo.completed === true).length > 0) {
+        clearCompletedButton =
+            <button className='clear-completed' onClick={clearCompleted}>
+                Clear completed
+            </button>
+    }
+
+
     return (
         <footer className='footer'>
             <span className='todo-count'>
-                <strong>0</strong> item left
+                <strong>{todos.filter(item => item.completed === false).length}</strong> item left
             </span>
             <ul className='filters'>
                 <li>
-                    <a href='#/' className='selected'>
+                    <a
+                        href='#/'
+                        id='all'
+                        onClick={() => setFiltering(0)}
+                        className={filtering === 0 ? "selected" : null}
+                    >
                         All
                     </a>
                 </li>
                 <li>
-                    <a href='#/active'>Active</a>
+                    <a
+                        href='#/active'
+                        id='active'
+                        onClick={() => setFiltering(1)}
+                        className={filtering === 1 ? "selected" : null}
+                    >
+                        Active
+                    </a>
                 </li>
                 <li>
-                    <a href='#/completed'>Completed</a>
+                    <a
+                        href='#/completed'
+                        id='completed'
+                        onClick={() => setFiltering(2)}
+                        className={filtering === 2 ? "selected" : null}
+                    >
+                        Completed
+                    </a>
                 </li>
             </ul>
-            <button className='clear-completed'>Clear completed</button>
+            {clearCompletedButton}
         </footer>
     )
 }
