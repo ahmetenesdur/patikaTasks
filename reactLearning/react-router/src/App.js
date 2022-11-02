@@ -8,6 +8,9 @@ import {
 } from "react-router-dom";
 
 import Home from './components/Home';
+import About from './components/About';
+import Users from './components/Users';
+import User from './components/User';
 
 function App() {
   return (
@@ -24,33 +27,23 @@ function App() {
             <li>
               <Link to="/users">Users</Link>
             </li>
+            <li>
+              <Link to="/user">User</Link>
+            </li>
           </ul>
         </nav>
 
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
         <Switch>
-          <Route path="/" exact>
-            <Home />
-          </Route>
-          <Route path="/about">
-            <About />
-          </Route>
-          <Route path="/users">
-            <Users />
-          </Route>
+          <Route path="/" exact component={Home} />
+          <Route path="/about" component={About} />
+          <Route path="/users" component={Users} />
+          <Route path="/user/:id" component={User} />
         </Switch>
       </div>
     </Router>
   );
-}
-
-function About() {
-  return <h2>About</h2>;
-}
-
-function Users() {
-  return <h2>Users</h2>;
 }
 
 export default App;
