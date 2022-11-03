@@ -22,7 +22,7 @@ function User() {
       <br />
       <br />
 
-      <Link to={`/user/${Number(id) + 1}`}>Next User ({Number(id) + 1})</Link>
+      <Link to={`/users/${Number(id) + 1}`}>Next User ({Number(id) + 1})</Link>
     </div>
   )
 }
